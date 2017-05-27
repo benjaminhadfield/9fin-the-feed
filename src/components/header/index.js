@@ -1,8 +1,9 @@
 import React from 'react'
 import { Title } from '../text'
+import Container from './components/container'
 
 export default () => (
-  <div>
+  <Container>
     <Title>The Feed</Title>
-  </div>
+  </Container>
 )
