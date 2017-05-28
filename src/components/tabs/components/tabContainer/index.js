@@ -6,5 +6,5 @@ export default styled.div`
   flex-direction: row;
   justify-content: flex-start;
   align-items: stretch;
-  padding-left: ${spacing.sd};
+  margin-bottom: ${spacing.sm};
 `
