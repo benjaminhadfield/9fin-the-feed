@@ -1,10 +1,11 @@
 import React from 'react'
-import axios from 'axios'
 import {
   BrowserRouter as Router,
   Route,
   Switch
 } from 'react-router-dom'
+import { sync } from './data/content/actions'
+import { connect } from 'react-redux'
 import Tabs from './components/tabs'
 import Header from './components/header'
 import Updates from './pages/updates'
@@ -13,10 +14,9 @@ import Cats from './pages/cats'
 import Faves from './pages/faves'
 import NotFound from './pages/errors/NotFound'
 
-export default class extends React.Component {
+class App extends React.Component {
   componentDidMount () {
-    axios.get('https://the-london-feed.herokuapp.com/sync')
-      .then(res => console.log(res.data))
+    this.props.sync()
   }
 
   render () {
@@ -27,8 +27,8 @@ export default class extends React.Component {
           <Tabs tabs={[
             {label: 'Updates', to: '/'},
             {label: 'Reviews', to: '/reviews'},
-            {label: 'Cats!', to: '/cats'},
-            {label: 'Faves', to: '/faves'}
+            {label: '😼', to: '/cats'},
+            {label: '⭐️', to: '/faves'}
           ]}>
             <Switch>
               <Route exact path='/' component={Updates} />
@@ -43,3 +43,9 @@ export default class extends React.Component {
     )
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  sync: () => dispatch(sync())
+})
+
+export default connect(null, mapDispatchToProps)(App)
