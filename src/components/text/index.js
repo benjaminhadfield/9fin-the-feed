@@ -28,7 +28,19 @@ export const Heading2 = _.withComponent('h3').extend`
 export const P = _.withComponent('p').extend`
   font-family: ${fontFamily.body};
   font-size: ${fontSize.body};
-  font-size: ${fontSize.body};
+`
+
+export const Small = _.withComponent('small').extend`
+  font-family: ${fontFamily.small};
+  color: ${colour.darkGrey}
+`
+
+export const A = _.withComponent('a').extend`
+  color: ${colour.blue};
+  text-decoration: none;
+  &:hover {
+    color: ${colour.blueHover};
+  }
 `
 
 export const Link = _.withComponent(_Link).extend`

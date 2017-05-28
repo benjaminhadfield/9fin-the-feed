@@ -8,7 +8,16 @@ const Updates = ({loading, travel}) => {
     <div>
       { loading
         ? 'Loading...'
-        : travel.map(t => <Tweet key={t.id} content={t.text} />) }
+        : travel.map(t =>
+          <Tweet
+            key={t.id}
+            avatar={t.user.profile_image_url_https}
+            name={t.user.name}
+            profileLink={t.user.url}
+            location={t.user.location}
+            time={t.created_at}
+            content={t.text} />)
+      }
     </div>
   )
 }
