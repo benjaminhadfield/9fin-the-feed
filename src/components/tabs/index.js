@@ -11,7 +11,7 @@ export default class Tabs extends React.Component {
       <Container>
         <TabContainer>
           {
-            tabs.map((tab, i) => <Tab active={activeTab === i} children={tab} />)
+            tabs.map((tab, i) => <Tab active={activeTab === i} children={tab} key={i} />)
           }
         </TabContainer>
         <Panel children={children} />
