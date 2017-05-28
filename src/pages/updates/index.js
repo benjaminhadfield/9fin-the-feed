@@ -1,13 +1,13 @@
 import React from 'react'
+import Spinner from '../../components/spinner'
 import { connect } from 'react-redux'
 import { Tweet } from '../../components/list'
 
 const Updates = ({loading, travel}) => {
-  console.log(loading, travel)
   return (
     <div>
       { loading
-        ? 'Loading...'
+        ? <Spinner name='three-bounce' />
         : travel.map(t =>
           <Tweet
             key={t.id}
