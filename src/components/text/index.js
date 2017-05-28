@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link as _Link } from 'react-router-dom'
 import { fontFamily, fontSize, colour, spacing } from '../../constants/style'
 
 const _ = styled.div`
@@ -28,4 +29,12 @@ export const P = _.withComponent('p').extend`
   font-family: ${fontFamily.body};
   font-size: ${fontSize.body};
   font-size: ${fontSize.body};
+`
+
+export const Link = _.withComponent(_Link).extend`
+  color: ${colour.blue};
+  text-decoration: none;
+  &:hover {
+    color: ${colour.blueHover};
+  }
 `

@@ -2,10 +2,8 @@ import React from 'react'
 import {
   BrowserRouter as Router,
   Route,
-  Link,
   Switch
 } from 'react-router-dom'
-// import logo from './logo.svg'
 import Tabs from './components/tabs'
 import Header from './components/header'
 import Updates from './pages/updates'
@@ -17,7 +15,11 @@ export default () => (
   <Router>
     <div>
       <Header />
-      <Tabs tabs={[<Link to='/'>Updates</Link>, <Link to='/reviews'>Reviews</Link>, <Link to='/cats'>Cats</Link>]}>
+      <Tabs tabs={[
+        {label: 'Updates', to: '/'},
+        {label: 'Reviews', to: '/reviews'},
+        {label: 'Cats!', to: '/cats'}
+      ]}>
         <Switch>
           <Route exact path='/' component={Updates} />
           <Route path='/reviews' component={Reviews} />

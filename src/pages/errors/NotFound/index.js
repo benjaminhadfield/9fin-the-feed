@@ -1,5 +1,5 @@
 import React from 'react'
-import { Heading1, P } from '../../../components/text'
+import { P } from '../../../components/text'
 import { Link } from 'react-router-dom'
 import NotFoundGif from '../../../assets/not-found.gif'
 
