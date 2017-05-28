@@ -4,6 +4,6 @@ import Container from './components/container'
 
 export default () => (
   <Container>
-    <Title>The Feed</Title>
+    <Title noMargin>The Feed</Title>
   </Container>
 )

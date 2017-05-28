@@ -12,7 +12,8 @@ export const fontSize = {
 
 export const colour = {
   black: '#23252b',
-  blue: '#5040ef'
+  blue: '#5040ef',
+  lightGrey: '#e6e6e8'
 }
 
 export const spacing = {

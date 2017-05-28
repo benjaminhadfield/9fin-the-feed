@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { fontFamily, fontSize, colour, spacing } from '../../constants/style'
 
 const _ = styled.div`
-  margin: 0 0 ${spacing.sd};
+  margin: ${props => props.noMargin ? 0 : `0 0 ${spacing.sd}`};
   padding: 0;
 `
 
