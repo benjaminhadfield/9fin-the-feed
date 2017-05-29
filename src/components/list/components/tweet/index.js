@@ -7,9 +7,9 @@ import Meta from './components/meta'
 import TweetContainer from './components/tweetContainer'
 import Middot from './components/middot'
 
-export default ({ content, avatar, name, profileLink, location, time }) => (
+export default ({ content, icon, name, profileLink, location, time }) => (
   <Container>
-    <Avatar src={avatar} />
+    <Avatar src={icon} />
     <TweetContainer>
       <Meta noMargin>
         <A href={profileLink} rel='nofollow'>{name}</A>

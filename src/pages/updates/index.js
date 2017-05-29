@@ -6,7 +6,7 @@ import { Tweet } from '../../components/list'
 
 class Updates extends React.Component {
   componentDidMount () {
-    this.props.connectToTravelWebsocket()
+    this.props.connectWebsocket()
   }
 
   render () {
@@ -18,7 +18,7 @@ class Updates extends React.Component {
           : travel.map(t =>
             <Tweet
               key={t.id}
-              avatar={t.user.profile_image_url_https}
+              icon={t.user.profile_image_url_https}
               name={t.user.name}
               profileLink={t.user.url}
               location={t.user.location}
@@ -33,7 +33,7 @@ class Updates extends React.Component {
 const mapStateToProps = ({ travel, loading }) => ({ travel, loading })
 
 const mapDispatchToProps = dispatch => ({
-  connectToTravelWebsocket: () => dispatch(connectToTravelWebsocket())
+  connectWebsocket: () => dispatch(connectToTravelWebsocket())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Updates)

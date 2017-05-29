@@ -3,7 +3,7 @@ import { Link as _Link } from 'react-router-dom'
 import { fontFamily, fontSize, colour, spacing } from '../../constants/style'
 
 const _ = styled.div`
-  margin: ${props => props.noMargin ? 0 : `0 0 ${spacing.sd}`};
+  margin: ${props => props.noMargin ? 0 : `0 0 ${spacing.sm}`};
   padding: 0;
 `
 

@@ -1,6 +1,8 @@
 import axios from 'axios'
 import io from 'socket.io-client'
 
+const travelSocket = io('https://the-london-feed.herokuapp.com/travel')
+
 export const SYNC_REQUEST = 'SYNC_REQUEST'
 export const SYNC_SUCCESS = 'SYNC_SUCCESS'
 export const SYNC_FAILURE = 'SYNC_FAILURE'
@@ -26,17 +28,16 @@ export const sync = () => dispatch => {
 
 export const connectToTravelWebsocket = () => dispatch => {
   dispatch(travelWebsocketConnectionRequest())
-  const socket = io('https://the-london-feed.herokuapp.com/travel')
   // connect to the travel webhook
-  socket.on('connect', () => {
+  travelSocket.on('connect', () => {
     dispatch(travelWebsocketConnectionSuccess())
     // start receiving data
-    socket.emit('start', {data: {}})
-    socket.on('message', (data) => {
+    travelSocket.emit('start', {data: {}})
+    travelSocket.on('message', (data) => {
       if (typeof data.data !== 'string') {
         dispatch(travelWebsocketNewEvent(data))
       }
     })
   })
-  socket.on('connect_error', () => dispatch(travelWebsocketConnectionFailure()))
+  travelSocket.on('connect_error', () => dispatch(travelWebsocketConnectionFailure()))
 }
