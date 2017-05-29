@@ -16,7 +16,7 @@ export default ({ content, avatar, name, profileLink, location, time }) => (
         <Middot />
         {location}
         <Middot />
-        {moment(time).fromNow()}
+        {moment(time).format('DD MMM')} ({moment(time).fromNow()})
       </Meta>
       <P noMargin>{content}</P>
     </TweetContainer>

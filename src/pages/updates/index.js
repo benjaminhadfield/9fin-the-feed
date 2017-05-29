@@ -1,17 +1,12 @@
 import React from 'react'
+import { connectToTravelWebsocket } from '../../data/actions'
 import Spinner from '../../components/spinner'
 import { connect } from 'react-redux'
 import { Tweet } from '../../components/list'
-import io from 'socket.io-client'
-
-const socket = io('http://the-london-feed.herokuapp.com/travel')
 
 class Updates extends React.Component {
   componentDidMount () {
-    console.log('connecting...')
-    socket.on('connect', () => {
-      console.log('connected to /travel', socket.id)
-    })
+    this.props.connectToTravelWebsocket()
   }
 
   render () {
@@ -35,9 +30,10 @@ class Updates extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  const { travel, loading } = state.content
-  return { travel, loading }
-}
+const mapStateToProps = ({ travel, loading }) => ({ travel, loading })
 
-export default connect(mapStateToProps)(Updates)
+const mapDispatchToProps = dispatch => ({
+  connectToTravelWebsocket: () => dispatch(connectToTravelWebsocket())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Updates)

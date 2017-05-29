@@ -4,7 +4,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom'
-import { sync } from './data/content/actions'
+import { sync } from './data/actions'
 import { connect } from 'react-redux'
 import Tabs from './components/tabs'
 import Header from './components/header'

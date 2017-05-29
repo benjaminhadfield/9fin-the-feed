@@ -14,9 +14,6 @@ const Reviews = ({ loading, reviews }) => {
   )
 }
 
-const mapStateToProps = state => {
-  const { reviews, loading } = state.content
-  return { reviews, loading }
-}
+const mapStateToProps = ({ reviews, loading }) => ({ reviews, loading })
 
 export default connect(mapStateToProps)(Reviews)

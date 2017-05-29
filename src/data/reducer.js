@@ -1,4 +1,40 @@
-import { combineReducers } from 'redux'
-import { default as content } from './content/reducer'
+import * as actionTypes from './actions'
 
-export default combineReducers({content})
+const initialState = {
+  travel: [],
+  reviews: [],
+  gifs: [],
+  loading: true,
+  error: false
+}
+
+export default (state = initialState, action) => {
+  switch (action.type) {
+    case actionTypes.SYNC_REQUEST:
+      return {
+        ...state,
+        loading: true
+      }
+    case actionTypes.SYNC_SUCCESS:
+      return {
+        ...state,
+        travel: action.data.travel,
+        reviews: action.data.reviews,
+        gifs: action.data.gifs,
+        loading: false
+      }
+    case actionTypes.SYNC_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      }
+    case actionTypes.TRAVEL_WEBSOCKET_NEW_EVENT:
+      return {
+        ...state,
+        travel: [action.data.data, ...state.travel]
+      }
+    default:
+      return state
+  }
+}
