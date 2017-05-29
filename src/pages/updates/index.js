@@ -15,15 +15,15 @@ class Updates extends React.Component {
       <div>
         { loading
           ? <Spinner name='three-bounce' />
-          : travel.map(t =>
+          : travel.map(tweet =>
             <Tweet
-              key={t.id}
-              icon={t.user.profile_image_url_https}
-              name={t.user.name}
-              profileLink={t.user.url}
-              location={t.user.location}
-              time={t.created_at}
-              content={t.text} />)
+              key={tweet.id}
+              icon={tweet.user.profile_image_url_https}
+              name={tweet.user.name}
+              profileLink={tweet.user.url}
+              location={tweet.user.location}
+              time={tweet.created_at}
+              content={tweet.text} />)
         }
       </div>
     )
