@@ -9,17 +9,17 @@ const Cats = ({ loading, gifs, gifsItemLoading, faves, star }) => {
     <div>
       { loading
         ? <Spinner name='three-bounce' />
-        : gifs.map(t =>
+        : gifs.map(gif =>
           <Gif
-            key={t.id}
-            star={() => star('gifs', t.id)}
-            src={t.gif_source}
-            loading={gifsItemLoading === t.id}
+            key={gif.id}
+            star={() => star('gifs', gif.id)}
+            src={gif.gif_source}
+            loading={gifsItemLoading === gif.id}
             isFave={faves
               .filter(item => item.dataType === 'gifs')
               .map(item => item.dataId)
-              .includes(t.id)}
-            href={t.origin_source} />)
+              .includes(gif.id)}
+            href={gif.origin_source} />)
       }
     </div>
   )

@@ -12,7 +12,22 @@ const Reviews = ({ loading, faves, gifs, reviews, travel }) => {
           switch (fave.dataType) {
             case 'gifs':
               const gif = gifs.find(gif => gif.id === fave.dataId)
-              return <Gif key={gif.id} src={gif.gif_source} href={gif.origin_source} isFave />
+              return <Gif
+                key={gif.id}
+                src={gif.gif_source}
+                href={gif.origin_source}
+                isFave />
+            case 'reviews':
+              const review = reviews.find(review => review.id === fave.dataId)
+              return <Review
+                key={review.id}
+                icon={review.image_url}
+                rating={review.rating}
+                categories={review.categories}
+                price={review.price}
+                phone={review.phone}
+                name={review.name}
+                isFave />
           }
         })
       }

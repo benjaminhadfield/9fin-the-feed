@@ -28,7 +28,7 @@ class App extends React.Component {
             {label: 'Updates', to: '/'},
             {label: 'Reviews', to: '/reviews'},
             {label: '😼', to: '/cats'},
-            {label: '✨', to: '/faves'}
+            {label: '💛', to: '/faves'}
           ]}>
             <Switch>
               <Route exact path='/' component={Updates} />
