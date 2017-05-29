@@ -5,6 +5,9 @@ const initialState = {
   reviews: [],
   gifs: [],
   faves: [],
+  travelItemLoading: false,
+  reviewsItemLoading: false,
+  gifsItemLoading: false,
   loading: true,
   error: false
 }
@@ -35,10 +38,23 @@ export default (state = initialState, action) => {
         ...state,
         travel: [action.data.data, ...state.travel]
       }
-    case actionTypes.STAR_SUCCESS:
+    case actionTypes.STAR_REQUEST:
       return {
         ...state,
-        faves: [action.item, ...state.faves]
+        [action.dataType + 'ItemLoading']: action.dataId
+      }
+    case actionTypes.STAR_SUCCESS:
+      const fave = {dataType: action.dataType, dataId: action.dataId}
+      return {
+        ...state,
+        faves: [fave, ...state.faves],
+        [action.dataType + 'ItemLoading']: false
+      }
+    case actionTypes.STAR_FAILURE:
+      return {
+        ...state,
+        error: action.error,
+        [action.dataType + 'ItemLoading']: false
       }
     default:
       return state

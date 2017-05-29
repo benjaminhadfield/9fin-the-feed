@@ -17,8 +17,8 @@ export const TRAVEL_WEBSOCKET_NEW_EVENT = 'TRAVEL_WEBSOCKET_NEW_EVENT'
 const syncRequest = () => ({type: SYNC_REQUEST})
 const syncSuccess = (data) => ({type: SYNC_SUCCESS, data})
 const syncFailure = (error) => ({type: SYNC_FAILURE, error})
-const starRequest = () => ({type: STAR_REQUEST})
-const starSuccess = (item) => ({type: STAR_SUCCESS, item})
+const starRequest = (dataType, dataId) => ({type: STAR_REQUEST, dataType, dataId})
+const starSuccess = (dataType, dataId) => ({type: STAR_SUCCESS, dataType, dataId})
 const starFailure = () => ({type: STAR_FAILURE})
 const travelWebsocketConnectionRequest = () => ({type: TRAVEL_WEBSOCKET_CONNECTION_REQUEST})
 const travelWebsocketConnectionSuccess = () => ({type: TRAVEL_WEBSOCKET_CONNECTION_SUCCESS})
@@ -33,12 +33,12 @@ export const sync = () => dispatch => {
 }
 
 export const star = (dataType, dataId) => dispatch => {
-  dispatch(starRequest())
+  dispatch(starRequest(dataType, dataId))
   axios.post('https://the-london-feed.herokuapp.com/star', {
     data_type: dataType,
     data_id: dataId
   })
-    .then(res => dispatch(starSuccess({dataType, dataId})))
+    .then(res => dispatch(starSuccess(dataType, dataId)))
     .catch(err => dispatch(starFailure(err)))
 }
 

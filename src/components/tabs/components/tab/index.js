@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colour, spacing, borderRadius, boxShadow, fontFamily } from '../../../../constants/style'
+import { colour, spacing, borderRadius, fontFamily } from '../../../../constants/style'
 import { NavLink } from 'react-router-dom'
 
 export default styled(NavLink)`

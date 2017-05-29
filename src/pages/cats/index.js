@@ -4,7 +4,7 @@ import { star } from '../../data/actions'
 import Spinner from '../../components/spinner'
 import {Gif} from '../../components/list'
 
-const Cats = ({ loading, gifs, star }) => {
+const Cats = ({ loading, gifs, gifsItemLoading, faves, star }) => {
   return (
     <div>
       { loading
@@ -14,13 +14,18 @@ const Cats = ({ loading, gifs, star }) => {
             key={t.id}
             star={() => star('gifs', t.id)}
             src={t.gif_source}
+            loading={gifsItemLoading === t.id}
+            isFave={faves
+              .filter(item => item.dataType === 'gifs')
+              .map(item => item.dataId)
+              .includes(t.id)}
             href={t.origin_source} />)
       }
     </div>
   )
 }
 
-const mapStateToProps = ({ gifs, loading }) => ({ gifs, loading })
+const mapStateToProps = ({ gifs, gifsItemLoading, faves, loading }) => ({ gifs, gifsItemLoading, faves, loading })
 const mapDispatchToProps = dispatch => ({
   star: (type, id) => dispatch(star(type, id))
 })
