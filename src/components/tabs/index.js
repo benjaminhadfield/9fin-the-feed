@@ -3,7 +3,7 @@ import Container from './components/container'
 import Tab from './components/tab'
 import TabContainer from './components/tabContainer'
 import Panel from './components/panel'
-import { colour } from '../../constants/style'
+import { colour, boxShadow } from '../../constants/style'
 
 export default class Tabs extends React.Component {
   render () {
@@ -15,7 +15,7 @@ export default class Tabs extends React.Component {
             tabs.map((tab, i) =>
               <Tab
                 exact
-                activeStyle={{'pointerEvents': 'none', 'color': 'white', 'background': colour.blue}}
+                activeStyle={{pointerEvents: 'none', color: 'white', background: colour.blue, boxShadow: boxShadow.sd, borderColor: 'royalblue'}}
                 children={tab.label}
                 to={tab.to}
                 key={tab.to} />

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Heading2 } from '../../../text'
-import Separator from '../../../separator'
 import Container from './components/container'
 import Column from './components/column'
 import Meta from './components/meta'

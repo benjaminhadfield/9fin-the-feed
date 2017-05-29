@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { spacing, borderRadius } from '../../../../../../constants/style'
+import { spacing, borderRadius, boxShadow } from '../../../../../../constants/style'
 
 export default styled.img`
   flex-shrink: 0;
   border-radius: ${borderRadius.sd};
-  box-shadow: 0 1px 6px rgba(0, 0, 0, .16);
+  box-shadow: ${boxShadow.sd};
   object-fit: cover;
   width: 60px;
   height: 60px;

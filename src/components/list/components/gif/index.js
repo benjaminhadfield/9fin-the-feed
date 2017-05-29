@@ -3,7 +3,7 @@ import { P, A } from '../../../text'
 import Container from './components/container'
 import Gif from './components/gif'
 
-export default ({src, href, ...props}) => {
+export default ({src, href, star, ...props}) => {
   const a = document.createElement('a')
   a.href = href
   return (
@@ -14,6 +14,7 @@ export default ({src, href, ...props}) => {
           ? <P>From <A rel='nofollow' href={href}>{a.hostname}</A>.</P>
           : <P>No source :'(</P>
       }
+      <button onClick={star}>Star</button>
     </Container>
   )
 }
