@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colour, spacing, borderRadius } from '../../../../constants/style'
+import { colour, spacing, borderRadius, fontFamily } from '../../../../constants/style'
 import { NavLink } from 'react-router-dom'
 
 export default styled(NavLink)`
@@ -12,6 +12,7 @@ export default styled(NavLink)`
   border: 1px solid ${colour.lightGrey};
   margin-right: ${spacing.sm};
   padding: ${spacing.sm} ${spacing.sd};
+  font-family: ${fontFamily.body};
   cursor: ${props => props.active ? 'default' : 'pointer'};
   pointer-events: ${props => props.active ? 'none' : 'auto'};
   text-align: center;

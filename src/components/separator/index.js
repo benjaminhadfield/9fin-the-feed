@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { spacing, colour } from '../../../../../../constants/style'
+import { spacing, colour } from '../../constants/style'
 
 const Separator = styled.span`
   padding: ${spacing.sm};

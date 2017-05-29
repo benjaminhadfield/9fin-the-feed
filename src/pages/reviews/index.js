@@ -13,7 +13,9 @@ const Reviews = ({ loading, reviews }) => {
             key={t.id}
             icon={t.image_url}
             rating={t.rating}
+            categories={t.categories}
             price={t.price}
+            phone={t.phone}
             name={t.name} />)
       }
     </div>

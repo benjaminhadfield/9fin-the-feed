@@ -1,5 +1,5 @@
 export const fontFamily = {
-  heading: '"Helvetica Neue", sans-serif',
+  heading: '"Roboto", "Helvetica Neue", sans-serif',
   body: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif'
 }
 
@@ -18,7 +18,7 @@ export const colour = {
   blueHover: '#2060cf',
   lightGrey: '#eff1f3',
   medGrey: '#d6d6d8',
-  darkGrey: '#b1b2b4'
+  darkGrey: '#9a9b9f'
 }
 
 export const spacing = {
