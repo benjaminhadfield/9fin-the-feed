@@ -26,7 +26,7 @@ export const sync = () => dispatch => {
 
 export const connectToTravelWebsocket = () => dispatch => {
   dispatch(travelWebsocketConnectionRequest())
-  const socket = io('http://the-london-feed.herokuapp.com/travel')
+  const socket = io('https://the-london-feed.herokuapp.com/travel')
   // connect to the travel webhook
   socket.on('connect', () => {
     dispatch(travelWebsocketConnectionSuccess())

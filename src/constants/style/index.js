@@ -18,7 +18,7 @@ export const colour = {
   blueHover: '#2060cf',
   lightGrey: '#eff1f3',
   medGrey: '#d6d6d8',
-  darkGrey: '#a4a5a7'
+  darkGrey: '#b1b2b4'
 }
 
 export const spacing = {
