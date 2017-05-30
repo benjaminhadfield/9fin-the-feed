@@ -1,5 +1,7 @@
 import * as actionTypes from './actions'
 
+const MAX_SIZE = 10
+
 // I'm sure theres a more concise way to do this, but meh, this is a proof of concept
 const initialState = {
   travel: [],
@@ -60,7 +62,7 @@ export default (state = initialState, action) => {
     case actionTypes.TRAVEL_WEBSOCKET_NEW_EVENT:
       return {
         ...state,
-        travel: [action.data.data, ...state.travel]
+        travel: [action.data.data, ...state.travel].slice(0, MAX_SIZE)
       }
     case actionTypes.REVIEWS_WEBSOCKET_CONNECTION_REQUEST:
       return {
@@ -82,7 +84,7 @@ export default (state = initialState, action) => {
     case actionTypes.REVIEWS_WEBSOCKET_NEW_EVENT:
       return {
         ...state,
-        reviews: [action.data.data, ...state.reviews]
+        reviews: [action.data.data, ...state.reviews].slice(0, MAX_SIZE)
       }
     case actionTypes.GIFS_WEBSOCKET_CONNECTION_REQUEST:
       return {
@@ -104,7 +106,7 @@ export default (state = initialState, action) => {
     case actionTypes.GIFS_WEBSOCKET_NEW_EVENT:
       return {
         ...state,
-        gifs: [action.data.data, ...state.gifs]
+        gifs: [action.data.data, ...state.gifs].slice(0, MAX_SIZE)
       }
     case actionTypes.STAR_REQUEST:
       return {
