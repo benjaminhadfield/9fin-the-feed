@@ -62,6 +62,50 @@ export default (state = initialState, action) => {
         ...state,
         travel: [action.data.data, ...state.travel]
       }
+    case actionTypes.REVIEWS_WEBSOCKET_CONNECTION_REQUEST:
+      return {
+        ...state,
+        reviewsWebsocketLoading: true
+      }
+    case actionTypes.REVIEWS_WEBSOCKET_CONNECTION_SUCCESS:
+      return {
+        ...state,
+        reviewsWebsocketLoading: false,
+        reviewsWebsocketConnected: true
+      }
+    case actionTypes.REVIEWS_WEBSOCKET_CONNECTION_FAILURE:
+      return {
+        ...state,
+        reviewsWebsocketLoading: false,
+        reviewsWebsocketConnected: false
+      }
+    case actionTypes.REVIEWS_WEBSOCKET_NEW_EVENT:
+      return {
+        ...state,
+        reviews: [action.data.data, ...state.reviews]
+      }
+    case actionTypes.GIFS_WEBSOCKET_CONNECTION_REQUEST:
+      return {
+        ...state,
+        gifsWebsocketLoading: true
+      }
+    case actionTypes.GIFS_WEBSOCKET_CONNECTION_SUCCESS:
+      return {
+        ...state,
+        gifsWebsocketLoading: false,
+        gifsWebsocketConnected: true
+      }
+    case actionTypes.GIFS_WEBSOCKET_CONNECTION_FAILURE:
+      return {
+        ...state,
+        gifsWebsocketLoading: false,
+        gifsWebsocketConnected: false
+      }
+    case actionTypes.GIFS_WEBSOCKET_NEW_EVENT:
+      return {
+        ...state,
+        gifs: [action.data.data, ...state.gifs]
+      }
     case actionTypes.STAR_REQUEST:
       return {
         ...state,
