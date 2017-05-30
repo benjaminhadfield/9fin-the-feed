@@ -1,5 +1,5 @@
 import React from 'react'
-import { connectToTravelWebsocket } from '../../data/actions'
+import { star, connectToTravelWebsocket } from '../../data/actions'
 import Spinner from '../../components/spinner'
 import Status from '../../components/status'
 import { connect } from 'react-redux'
@@ -14,7 +14,7 @@ class Updates extends React.Component {
   }
 
   render () {
-    const {loading, travel, travelWebsocketConnected, travelWebsocketLoading} = this.props
+    const {loading, travel, faves, travelItemLoading, travelWebsocketConnected, travelWebsocketLoading, star} = this.props
     return (
       <div>
         <Status
@@ -27,6 +27,12 @@ class Updates extends React.Component {
               key={tweet.id}
               icon={tweet.user.profile_image_url_https}
               name={tweet.user.name}
+              star={() => star(tweet)}
+              isFave={faves
+                .filter(item => item.dataType === 'travel')
+                .map(item => item.item.id)
+                .includes(tweet.id)}
+              loading={travelItemLoading === tweet.id}
               profileLink={tweet.user.url}
               location={tweet.user.location}
               time={tweet.created_at}
@@ -38,6 +44,7 @@ class Updates extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
+  star: (item) => dispatch(star('travel', item)),
   connectWebsocket: () => dispatch(connectToTravelWebsocket())
 })
 

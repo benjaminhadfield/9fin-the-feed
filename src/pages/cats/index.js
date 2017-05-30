@@ -25,7 +25,7 @@ class Cats extends React.Component {
           : gifs.map(gif =>
             <Gif
               key={gif.id}
-              star={() => star('gifs', gif)}
+              star={() => star(gif)}
               src={gif.gif_source}
               loading={gifsItemLoading === gif.id}
               isFave={faves
@@ -40,7 +40,7 @@ class Cats extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  star: (type, item) => dispatch(star(type, item)),
+  star: (item) => dispatch(star('gifs', item)),
   connectToWebsocket: () => dispatch(connectToGifsWebsocket())
 })
 

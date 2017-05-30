@@ -25,7 +25,7 @@ const syncSuccess = (data) => ({type: SYNC_SUCCESS, data})
 const syncFailure = (error) => ({type: SYNC_FAILURE, error})
 const starRequest = (dataType, item) => ({type: STAR_REQUEST, dataType, item})
 const starSuccess = (dataType, item) => ({type: STAR_SUCCESS, dataType, item})
-const starFailure = () => ({type: STAR_FAILURE})
+const starFailure = (dataType, error) => ({type: STAR_FAILURE, dataType, error})
 const travelWebsocketConnectionRequest = () => ({type: TRAVEL_WEBSOCKET_CONNECTION_REQUEST})
 const travelWebsocketConnectionSuccess = () => ({type: TRAVEL_WEBSOCKET_CONNECTION_SUCCESS})
 const travelWebsocketConnectionFailure = () => ({type: TRAVEL_WEBSOCKET_CONNECTION_FAILURE})
@@ -49,11 +49,11 @@ export const sync = () => dispatch => {
 export const star = (dataType, item) => dispatch => {
   dispatch(starRequest(dataType, item))
   axios.post('https://the-london-feed.herokuapp.com/star', {
-    data_type: dataType,
-    data_id: item.id
+    data_type: dataType.toString(),
+    data_id: item.id.toString()
   })
     .then(res => dispatch(starSuccess(dataType, item)))
-    .catch(err => dispatch(starFailure(err)))
+    .catch(err => dispatch(starFailure(dataType, err)))
 }
 
 // these next three connect functions should be abstracted to reduce repeated code

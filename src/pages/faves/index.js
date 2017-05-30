@@ -27,6 +27,16 @@ const Reviews = ({ loading, faves, gifs, reviews, travel }) => {
                 phone={item.phone}
                 name={item.name}
                 isFave />
+            case 'travel':
+              return <Tweet
+                key={item.id}
+                icon={item.user.profile_image_url_https}
+                name={item.user.name}
+                profileLink={item.user.url}
+                location={item.user.location}
+                time={item.created_at}
+                content={item.text}
+                isFave />
           }
         })
       }

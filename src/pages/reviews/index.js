@@ -25,7 +25,7 @@ class Reviews extends React.Component {
           : reviews.map(review =>
             <Review
               key={review.id}
-              star={() => star('reviews', review)}
+              star={() => star(review)}
               isFave={faves
                 .filter(item => item.dataType === 'reviews')
                 .map(item => item.item.id)
@@ -44,7 +44,7 @@ class Reviews extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  star: (type, item) => dispatch(star(type, item)),
+  star: (item) => dispatch(star('reviews', item)),
   connectToWebsocket: () => dispatch(connectToReviewsWebsocket())
 })
 
