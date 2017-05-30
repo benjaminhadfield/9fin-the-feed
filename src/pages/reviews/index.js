@@ -2,11 +2,16 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { star } from '../../data/actions'
 import Spinner from '../../components/spinner'
+import Status from '../../components/status'
 import { Review } from '../../components/list'
 
-const Reviews = ({ loading, reviewsItemLoading, reviews, faves, star }) => {
+// a lot of the logic in this class could be abstracted to a HOC for reuse across all pages
+const Reviews = ({ loading, reviewsItemLoading, reviews, faves, star, reviewsWebsocketLoading, reviewsWebsocketConnected }) => {
   return (
     <div>
+      <Status
+        websocketLoading={reviewsWebsocketLoading}
+        websocketConnected={reviewsWebsocketConnected} />
       { loading
         ? <Spinner name='three-bounce' />
         : reviews.map(review =>
@@ -29,10 +34,8 @@ const Reviews = ({ loading, reviewsItemLoading, reviews, faves, star }) => {
   )
 }
 
-const mapStateToProps = ({ reviews, faves, reviewsItemLoading, loading }) => ({ reviews, faves, reviewsItemLoading, loading })
-
 const mapDispatchToProps = dispatch => ({
   star: (type, id) => dispatch(star(type, id))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Reviews)
+export default connect(state => state, mapDispatchToProps)(Reviews)

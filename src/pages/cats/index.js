@@ -2,11 +2,16 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { star } from '../../data/actions'
 import Spinner from '../../components/spinner'
+import Status from '../../components/status'
 import {Gif} from '../../components/list'
 
-const Cats = ({ loading, gifs, gifsItemLoading, faves, star }) => {
+// a lot of the logic in this class could be abstracted to a HOC for reuse across all pages
+const Cats = ({ loading, gifs, gifsItemLoading, faves, star, gifsWebsocketLoading, gifsWebsocketConnected }) => {
   return (
     <div>
+      <Status
+        websocketLoading={gifsWebsocketLoading}
+        websocketConnected={gifsWebsocketConnected} />
       { loading
         ? <Spinner name='three-bounce' />
         : gifs.map(gif =>
@@ -25,9 +30,8 @@ const Cats = ({ loading, gifs, gifsItemLoading, faves, star }) => {
   )
 }
 
-const mapStateToProps = ({ gifs, gifsItemLoading, faves, loading }) => ({ gifs, gifsItemLoading, faves, loading })
 const mapDispatchToProps = dispatch => ({
   star: (type, id) => dispatch(star(type, id))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cats)
+export default connect(state => state, mapDispatchToProps)(Cats)
