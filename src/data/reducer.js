@@ -111,10 +111,10 @@ export default (state = initialState, action) => {
     case actionTypes.STAR_REQUEST:
       return {
         ...state,
-        [action.dataType + 'ItemLoading']: action.dataId
+        [action.dataType + 'ItemLoading']: action.item.id
       }
     case actionTypes.STAR_SUCCESS:
-      const fave = {dataType: action.dataType, dataId: action.dataId}
+      const fave = { dataType: action.dataType, item: action.item }
       return {
         ...state,
         faves: [fave, ...state.faves],

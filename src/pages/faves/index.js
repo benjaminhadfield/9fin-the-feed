@@ -9,24 +9,23 @@ const Reviews = ({ loading, faves, gifs, reviews, travel }) => {
       { loading
         ? <Spinner name='three-bounce' />
         : faves.map(fave => {
+          const item = fave.item
           switch (fave.dataType) {
             case 'gifs':
-              const gif = gifs.find(gif => gif.id === fave.dataId)
               return <Gif
-                key={gif.id}
-                src={gif.gif_source}
-                href={gif.origin_source}
+                key={item.id}
+                src={item.gif_source}
+                href={item.origin_source}
                 isFave />
             case 'reviews':
-              const review = reviews.find(review => review.id === fave.dataId)
               return <Review
-                key={review.id}
-                icon={review.image_url}
-                rating={review.rating}
-                categories={review.categories}
-                price={review.price}
-                phone={review.phone}
-                name={review.name}
+                key={item.id}
+                icon={item.image_url}
+                rating={item.rating}
+                categories={item.categories}
+                price={item.price}
+                phone={item.phone}
+                name={item.name}
                 isFave />
           }
         })

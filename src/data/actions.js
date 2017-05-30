@@ -23,8 +23,8 @@ export const GIFS_WEBSOCKET_NEW_EVENT = 'GIFS_WEBSOCKET_NEW_EVENT'
 const syncRequest = () => ({type: SYNC_REQUEST})
 const syncSuccess = (data) => ({type: SYNC_SUCCESS, data})
 const syncFailure = (error) => ({type: SYNC_FAILURE, error})
-const starRequest = (dataType, dataId) => ({type: STAR_REQUEST, dataType, dataId})
-const starSuccess = (dataType, dataId) => ({type: STAR_SUCCESS, dataType, dataId})
+const starRequest = (dataType, item) => ({type: STAR_REQUEST, dataType, item})
+const starSuccess = (dataType, item) => ({type: STAR_SUCCESS, dataType, item})
 const starFailure = () => ({type: STAR_FAILURE})
 const travelWebsocketConnectionRequest = () => ({type: TRAVEL_WEBSOCKET_CONNECTION_REQUEST})
 const travelWebsocketConnectionSuccess = () => ({type: TRAVEL_WEBSOCKET_CONNECTION_SUCCESS})
@@ -46,13 +46,13 @@ export const sync = () => dispatch => {
     .catch(err => dispatch(syncFailure(err)))
 }
 
-export const star = (dataType, dataId) => dispatch => {
-  dispatch(starRequest(dataType, dataId))
+export const star = (dataType, item) => dispatch => {
+  dispatch(starRequest(dataType, item))
   axios.post('https://the-london-feed.herokuapp.com/star', {
     data_type: dataType,
-    data_id: dataId
+    data_id: item.id
   })
-    .then(res => dispatch(starSuccess(dataType, dataId)))
+    .then(res => dispatch(starSuccess(dataType, item)))
     .catch(err => dispatch(starFailure(err)))
 }
 
