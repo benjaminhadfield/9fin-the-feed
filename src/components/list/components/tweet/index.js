@@ -1,6 +1,6 @@
 import React from 'react'
 import moment from 'moment'
-import { P, A } from '../../../text'
+import { P, A, Small } from '../../../text'
 import Separator from '../../../separator'
 import Container from './components/container'
 import Avatar from './components/avatar'
@@ -11,12 +11,12 @@ export default ({ content, icon, name, profileLink, location, time }) => (
   <Container>
     <Avatar src={icon} />
     <TweetContainer>
-      <Meta noMargin>
-        <A href={profileLink} rel='nofollow'>{name}</A>
+      <Meta>
+        <Small><A href={profileLink} rel='nofollow'>{name}</A></Small>
         <Separator />
-        {location}
+        <Small>{location}</Small>
         <Separator />
-        {moment(time).format('DD MMM')} ({moment(time).fromNow()})
+        <Small>{moment(time).format('DD MMM')} ({moment(time).fromNow()})</Small>
       </Meta>
       <P noMargin>{content}</P>
     </TweetContainer>
